@@ -1,5 +1,6 @@
 import 'package:doctorhub/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'design_system/colors.dart';
 
@@ -12,14 +13,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final newTextTheme = Theme.of(context).textTheme.apply(
+      bodyColor: Color(0xff222B45),
+      displayColor: Color(0xff222B45),
+    );
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Doctor appointment',
+
       theme: ThemeData(
+        textTheme: newTextTheme,
+        scaffoldBackgroundColor: const Color(0xfff2f2f2),
         primarySwatch: swatch,
       ),
-      home:
-           HomePage(),
+      home:const HomePage(),
     );
   }
 }

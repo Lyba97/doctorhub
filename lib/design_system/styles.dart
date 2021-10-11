@@ -42,6 +42,22 @@ TextStyle medium10 = const TextStyle(
 );
 
 
+TextStyle regular16 = const TextStyle(
+  fontWeight: FontWeight.w400,
+  fontSize: 16,
+  letterSpacing: 0.27,
+);
+TextStyle regular14 = const TextStyle(
+  fontWeight: FontWeight.w400,
+  fontSize: 14,
+  letterSpacing: 0.25,
+);
+TextStyle regular10 = const TextStyle(
+  fontWeight: FontWeight.w400,
+  fontSize: 10,
+  letterSpacing: 0.17,
+);
+
 
 TextStyle light14 = const TextStyle(
     fontWeight: FontWeight.w300,

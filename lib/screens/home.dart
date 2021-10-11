@@ -1,9 +1,11 @@
 import 'package:doctorhub/design_system/colors.dart';
 import 'package:doctorhub/design_system/styles.dart';
 import 'package:doctorhub/models/speciality.dart';
+import 'package:doctorhub/screens/doctors.dart';
 import 'package:doctorhub/widgets/speciality_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -92,9 +94,11 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
-                      child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Image.asset('assets/illustration.png')),
+                      child: SizedBox(
+                        // height: 180,
+                       // width: double.maxFinite,
+                        child: Image.asset('assets/illustration.png'),
+                      ),
                     ),
                   )
                 ],
@@ -110,37 +114,42 @@ class HomePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 color: cardColor5percent, borderRadius: BorderRadius.circular(20)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'STI Problems?',
-                        style: bold14.apply(color: textColor),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        'Find suitable specialists here',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: light12,
-                      )
-                    ],
+            child: GestureDetector(
+              onTap: (){
+                Get.to(()=>const Doctors());
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'STI Problems?',
+                          style: bold14.apply(color: textColor),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          'Find suitable specialists here',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: light12,
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(13),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: SvgPicture.asset('assets/arrow-next.svg'),
-                )
-              ],
+                  Container(
+                    padding: const EdgeInsets.all(13),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: SvgPicture.asset('assets/arrow-next.svg'),
+                  )
+                ],
+              ),
             ),
           ),
           const SizedBox(
