@@ -1,7 +1,9 @@
 import 'package:doctorhub/design_system/colors.dart';
 import 'package:doctorhub/design_system/styles.dart';
 import 'package:doctorhub/models/doctor.dart';
+import 'package:doctorhub/screens/doctor_details.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Doctors extends StatelessWidget {
   const Doctors({Key? key}) : super(key: key);
@@ -19,12 +21,17 @@ class Doctors extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: cardColor5percent, width: 2),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Icon(Icons.arrow_back),
+                GestureDetector(
+                  onTap: (){
+                    Get.back();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: cardColor5percent, width: 2),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: const Icon(Icons.arrow_back),
+                  ),
                 ),
                 Text(
                   'Doctors',
@@ -85,48 +92,53 @@ class Doctors extends StatelessWidget {
   }
 
   Widget doctorsCard(Doctor doctor) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 22),
-      alignment: Alignment.center,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.asset(doctor.img)),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Text(
-            doctor.name,
-            style: medium14,
-          ),
-          const SizedBox(
-            height: 6,
-          ),
-          Text(
-            doctor.speciality,
-            style: bold14.apply(color: Colors.blueGrey, fontSizeFactor: 0.8),
-          ),
-          Text(
-            '⭐️ ${doctor.rating} (${doctor.reviewsCount} reviews)',
-            style: medium10.apply(color: Colors.blueGrey),
-          )
-        ],
-      ),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.062),
-              //spreadRadius: 5,
-              blurRadius: 60,
-              offset: const Offset(0, 10), // changes position of shadow
+    return GestureDetector(
+     onTap: (){
+       Get.to(()=> DoctorDetails(doctor: doctor,));
+     },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 22),
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.asset(doctor.img)),
             ),
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              doctor.name,
+              style: medium14,
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            Text(
+              doctor.speciality,
+              style: bold14.apply(color: Colors.blueGrey, fontSizeFactor: 0.8),
+            ),
+            Text(
+              '⭐️ ${doctor.rating} (${doctor.reviewsCount} reviews)',
+              style: medium10.apply(color: Colors.blueGrey),
+            )
           ],
-          borderRadius: BorderRadius.circular(15)),
+        ),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.062),
+                //spreadRadius: 5,
+                blurRadius: 60,
+                offset: const Offset(0, 10), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(15)),
+      ),
     );
   }
 }

@@ -9,6 +9,7 @@ TextStyle bold36 = const TextStyle(
 TextStyle bold18 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 18,
+   // height: 18 * 1.5,
     letterSpacing: 0.3,
     color: Colors.white);
 TextStyle bold16 = const TextStyle(
@@ -20,6 +21,7 @@ TextStyle bold16 = const TextStyle(
 TextStyle bold14 = const TextStyle(
     fontWeight: FontWeight.w700,
     fontSize: 14,
+    //height: 14 * 0.15,
     letterSpacing: 0.25,
     color: Colors.white);
 
